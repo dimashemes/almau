@@ -75,8 +75,8 @@ def upload_files(request):
         form = forms.DocumentForm(mutable_post_data, request.FILES)
         if form.is_valid():
             uploaded_files = request.FILES.getlist('file')
-
             for uploaded_file in uploaded_files:
+                print(uploaded_file.name)
                 models.Document.objects.create(file=uploaded_file, applicant=user, type='Id')
             return redirect('upload_photo')
         else:
@@ -98,7 +98,7 @@ def upload_ent(request):
             uploaded_files = request.FILES.getlist('file')
             for uploaded_file in uploaded_files:
                 models.Document.objects.create(file=uploaded_file, applicant=user, type='Ent')
-            return redirect('upload_ent')
+            return redirect('upload_grant')
     else:
         form = forms.DocumentForm()
 
@@ -117,7 +117,7 @@ def upload_grant(request):
             uploaded_files = request.FILES.getlist('file')
             for uploaded_file in uploaded_files:
                 models.Document.objects.create(file=uploaded_file, applicant=user, type='Grant')
-            return redirect('upload_grant')
+            return redirect('upload_military')
     else:
         form = forms.DocumentForm()
 
@@ -136,7 +136,7 @@ def upload_military(request):
             uploaded_files = request.FILES.getlist('file')
             for uploaded_file in uploaded_files:
                 models.Document.objects.create(file=uploaded_file, applicant=user, type='Military')
-            return redirect('upload_military')
+            return redirect('upload_medical')
     else:
         form = forms.DocumentForm()
 
@@ -151,11 +151,10 @@ def upload_medical(request):
         mutable_post_data['user'] = user
         form = forms.DocumentForm(mutable_post_data, request.FILES)
         if form.is_valid():
-            print(5)
             uploaded_files = request.FILES.getlist('file')
             for uploaded_file in uploaded_files:
                 models.Document.objects.create(file=uploaded_file, applicant=user, type='Medical')
-            return redirect('upload_medical')
+            return redirect('upload_birth')
     else:
         form = forms.DocumentForm()
 
@@ -174,7 +173,7 @@ def upload_birth(request):
             uploaded_files = request.FILES.getlist('file')
             for uploaded_file in uploaded_files:
                 models.Document.objects.create(file=uploaded_file, applicant=user, type='Birth')
-            return redirect('upload_birth')
+            return redirect('upload_certificate')
     else:
         form = forms.DocumentForm()
 
@@ -193,7 +192,7 @@ def upload_certificate(request):
             uploaded_files = request.FILES.getlist('file')
             for uploaded_file in uploaded_files:
                 models.Document.objects.create(file=uploaded_file, applicant=user, type='certificate')
-            return redirect('upload_certificate')
+            return redirect('login')
     else:
         form = forms.DocumentForm()
 
@@ -211,6 +210,7 @@ def upload_photo(request):
             uploaded_files = request.FILES.getlist('file')
             for uploaded_file in uploaded_files:
                 models.Document.objects.create(file=uploaded_file, applicant=user, type='photo')
+            return redirect('upload_ent')
     else:
         form = forms.DocumentForm()
 

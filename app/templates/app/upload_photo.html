@@ -11,24 +11,26 @@
                 <div class="drop-text" id="dragdrop">Drag & Drop files here</div>
                 <input type="file" id="fileInput" name="file" multiple>
             </div>
-            <button onclick="window.location.href = '{% url 'upload_ent' %}';" type="submit" class="registerbtn" id="subm" >Next</button>
+            <button type="submit" class="registerbtn"
+                    id="subm">Next
+            </button>
             <div id="file-list" class="file-list">
                 <h2>Uploaded Files</h2>
                 <ul id="files"></ul>
             </div>
             <style>
-               
-            
+
+
             </style>
 
-            
+
         </form>
     </div>
 </main>
 
 <script>
 
-    
+
     function validateForm() {
         var files = document.getElementById("fileInput").files;
         if (files.length === 0) {
@@ -36,7 +38,6 @@
             return false;
         } else {
             fireSweetAlert();
-            return false;
         }
     }
 
@@ -53,6 +54,7 @@
             }
         });
     }
+
 
     document.addEventListener('DOMContentLoaded', function () {
         const dropArea = document.getElementById('drop-area');

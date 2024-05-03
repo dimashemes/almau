@@ -5,32 +5,32 @@
     <div class="regist page2">
         <h1 class="title">UPLOAD YOUR REGISTRATION CERTIFICATE</h1>
         <h3 class="subtitle">Military service registration certificate</h2>
-        <form method="post" enctype="multipart/form-data" id="registrationForm" onsubmit="return validateForm()">
-            {% csrf_token %}
-           
-            <div id="drop-area" class="drop-area">
-                
-                <div class="drop-text" id="dragdrop">Drag & Drop files here</div>
-                <input type="file" id="fileInput" name="file" multiple>
-            </div>
-            <button onclick="window.location.href = '{% url 'upload_medical' %}';" type="submit" class="registerbtn" id="subm">Next</button>
-            <div id="file-list" class="file-list">
-                <h2>Uploaded Files</h2>
-                <ul id="files"></ul>
-            </div>
-            <style>
-               
-            
-            </style>
+            <form method="post" enctype="multipart/form-data" id="registrationForm" onsubmit="return validateForm()">
+                {% csrf_token %}
 
-            
-        </form>
+                <div id="drop-area" class="drop-area">
+
+                    <div class="drop-text" id="dragdrop">Drag & Drop files here</div>
+                    <input type="file" id="fileInput" name="file" multiple>
+                </div>
+                <button type="submit" class="registerbtn" id="subm">Next</button>
+                <div id="file-list" class="file-list">
+                    <h2>Uploaded Files</h2>
+                    <ul id="files"></ul>
+                </div>
+                <style>
+
+
+                </style>
+
+
+            </form>
     </div>
 </main>
 
 <script>
 
-    
+
     function validateForm() {
         var files = document.getElementById("fileInput").files;
         if (files.length === 0) {

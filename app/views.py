@@ -16,7 +16,7 @@ import os
 def send_verification_email(email, verification_code):
     sender = settings.EMAIL_HOST_USER
     subject = "Email Verification"
-    message = f'Open the link to verify your email: http://127.0.0.1:8000/verify/?code={verification_code}?exp=15 /// https://drive.google.com/file/d/1MJR3Dtkzn7_oh-kiClj8jK4lrmMOuhHO/view?usp=sharing.'
+    message = f'Open the link to verify your email: https://almau.up.railway.app/verify/?code={verification_code}?exp=15 /// https://drive.google.com/file/d/1MJR3Dtkzn7_oh-kiClj8jK4lrmMOuhHO/view?usp=sharing.'
 
     pdf_file_path = os.path.join(settings.BASE_DIR, 'static', 'Инструкция по пользованию нашим сервисом.pdf')
 

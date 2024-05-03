@@ -1,0 +1,400 @@
+{% load static %}
+<html lang="ru" style="    margin-right: 50px;">
+<head>
+<script src="{% static 'app/index.js' %}">
+    document.addEventListener('DOMContentLoaded', function() {
+        const translations = {
+            en: {
+                welcome: "Welcome to AlmaU",
+                sendap: "Send Application",
+                name: "Name",
+                gender2: "Gender",
+                birth_date: "Birth Date",
+                email: "Email",
+                verified: "Verified",
+                school: "School",
+                documents: "Documents",
+                spisok: "List of documents",
+                zayav: "Application",
+                udos: "Identity document",
+                attes: "Diploma / Certificate with appendix",
+                photo: "6 photos 3/4 size",
+                paspr: "Health passport",
+                cert: "ENT Certificate",
+                prip: "Military ID (for young men)",
+                docpod: "Document proving preferential right to a government educational grant",
+                med: "Medical certificate form 075-u",
+                cop: "Copy of birth certificate",
+                dragdrop: "Drag & Drop files here",
+                uploaded: "Uploaded Documents",
+                subm: "Submit",
+                male: "Male",
+                female: "Female",
+                swal_title: "Check your email!",
+                swal_text: "Verification code sent successfully!",
+                swal_confirmButtonText: "OK",
+                full_name: "Full name",
+                id: "UPLOAD YOUR ID",
+            },
+            ru: {
+                welcome: "Добро пожаловать в AlmaU",
+                sendap: "Отправить заявку",
+                name: "Имя",
+                gender2: "Пол",
+                birth_date: "Дата рождения",
+                email: "Электронная почта",
+                verified: "Проверено",
+                school: "Школа",
+                documents: "Документы",
+                spisok: "Список документов",
+                zayav: "Заявление",
+                udos: "Удостоверение личности",
+                attes: "Аттестат / диплом с приложением",
+                photo: "6 фото размером 3/4",
+                paspr: "паспорт здоровья",
+                cert: "Сертификат ЕНТ",
+                prip: "Приписное свидетельство(для юношей)",
+                docpod: "Государственный грант",
+                med: "Медицинская справка формы 075-у",
+                cop: "копия свидетельства о рождении",
+                dragdrop: "Перетащите файлы сюда",
+                uploaded: "Загруженные Документы",
+                subm: "Отправить",
+                male: "Мужчина",
+                female: "Женщина",
+                swal_title: "Проверьте свою почту!",
+                swal_text: "Код подтверждения успешно отправлен!",
+                swal_confirmButtonText: "OK",
+                full_name: "ФИО",
+                id: "Загрузите удостоверение",
+            },
+            kz: {
+                welcome: "AlmaU қош келдіңіз",
+                sendap: "Өтініш жіберу",
+                name: "Аты",
+                gender2: "Жынысы",
+                birth_date: "Туған күні",
+                email: "Электрондық пошта",
+                verified: "Расталған",
+                school: "Мектеп",
+                documents: "Құжаттар",
+                spisok: "Құжаттар тізімі",
+                zayav: "Өтініш",
+                udos: "Жеке куәлік",
+                attes: "Диплом / Аттестат және қосымша",
+                photo: "6 фото 3/4 өлшемінде",
+                paspr: "Денсаулық паспорты",
+                cert: "ҰБТ Сертификаты",
+                prip: "Әскери куәлік(ер адамдар үшін)",
+                docpod: "Мемлекеттік білім беру грантына артықшылық құқығын растайтын құжат",
+                med: "075-у формасындағы медициналық анықтама",
+                cop: "Туу туралы куәліктің көшірмесі",
+                dragdrop: "Файлдарды мына жерге апарып тастаңыз",
+                uploaded: "Жүктелген Құжаттар",
+                subm: "Жіберу",
+                male: "Ер",
+                female: "Қыз",
+                swal_title: "Поштаңызды тексеріңіз!",
+                swal_text: "Растау коды сәтті жіберілді!",
+                swal_confirmButtonText: "Жарайды",
+                full_name: "Аты-жөні",
+
+            }
+        };
+        const element = document.getElementById('welcome');
+
+        element.style.fontFamily = 'Roboto, sans-serif';
+
+        function changeLanguage() {
+            const selectedLang = document.getElementById("languageSwitcher").value;
+            const langData = translations[selectedLang];
+
+            for (const key in langData) {
+                if (langData.hasOwnProperty(key)) {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.textContent = langData[key];
+                    }
+                }
+            }
+        }
+
+        document.getElementById("languageSwitcher").addEventListener('change', changeLanguage);
+        changeLanguage();
+    });
+</script>
+
+    <meta charset="UTF-8">
+    <title>AlmaU</title>
+    <meta name="description" content="Описание страницы"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;1,200;1,300&family=Raleway:ital,wght@0,300;1,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" href="#">
+    <style>
+        /* Стили для мобильных устройств */
+        @media (max-width: 480px) {
+
+            header{
+                width: 380px;
+            }
+            body{
+                width:100%;
+            }
+            .regist {
+                position: relative;
+                margin-left: 130px;
+                max-width: 100%;
+                bottom: 0px;
+            }
+            #gender,
+            #birth_date {
+                width: 100%;
+                padding: 12px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+
+            #birth_date {
+                margin-top: 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .title {
+                font-size: 24px;
+                padding-bottom: 10px;
+                margin-left:-80px;
+            }
+            .subtitle{
+                font-size: 14px;
+                margin-top: 5px;
+                margin-left:-80px;
+
+            }
+
+            .registerbtn {
+                width: 80%;
+                padding: 10px;
+                font-size: 16px;
+            }
+            #subm {
+                margin-left: 0;
+                width: 400px;
+
+            }
+            .title {
+                font-size: 24px; /* Уменьшение размера заголовка */
+            }
+            .page2{
+                width: 310px;
+            }
+            .drop-area {
+                width: 350px;
+                margin-bottom: 10px; /* Уменьшение отступа между drop-area и кнопкой */
+            }
+
+            .registerbtn {
+                margin-left: 0; /* Установка отступа кнопки слева на 0 */
+                width: 100%; /* Ширина кнопки на всю доступную ширину */
+            }
+
+            .file-list {
+                margin-top: 10px; /* Увеличение отступа перед списком файлов */
+            }
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+            }
+
+            .logo {
+                width: 130px;
+            }
+
+            #languageSwitcher {
+                width: 70px; /* Размер селектора языка для мобильных устройств */
+                display: flex;
+                position: absolute;
+                width: 80px;
+                /* margin-right: 5px; */
+                padding: 8px;
+                margin: 0;
+                left: 73%;
+            }
+
+            .back-g {
+                display: none; /* Скрытие фона на мобильных устройствах */
+            }
+        }
+
+        .back-g {
+            width: 40%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .back {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header">
+        <img src="{% static 'img/logo.png'%}" alt="Логотип" class="logo">
+
+        <select id="languageSwitcher" onchange="changeLanguage()">
+            <option value="en">EN</option>
+            <option value="ru">RU</option>
+            <option value="kz">KZ</option>
+        </select>
+    </div>
+</header>
+{% block content %}
+{% endblock %}
+<section class="back-g">
+    <img src="{% static 'img/back.png' %}" alt="Фон" class="back" style="width: 100%">
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const translations = {
+        en: {
+            welcome: "Welcome to AlmaU",
+            sendap: "Send Application",
+            name: "Name",
+            gender2: "Gender",
+            birth_date: "Birth Date",
+            email: "Email",
+            verified: "Verified",
+            school: "School",
+            documents: "Documents",
+            spisok: "List of documents",
+            zayav: "Application",
+            udos: "Identity document",
+            attes: "Diploma / Certificate with appendix",
+            photo: "6 photos 3/4 size",
+            paspr: "Health passport",
+            cert: "ENT Certificate",
+            prip: "Military ID (for young men)",
+            docpod: "Document proving preferential right to a government educational grant",
+            med: "Medical certificate form 075-u",
+            cop: "Copy of birth certificate",
+            dragdrop: "Drag & Drop files here",
+            uploaded: "Uploaded Documents",
+            subm: "Submit",
+            male: "Male",
+            female: "Female",
+            swal_title: "Check your email!",
+            swal_text: "Verification code sent successfully!",
+            swal_confirmButtonText: "OK",
+            full_name:"Full name",
+        },
+        ru: {
+            welcome: "Добро пожаловать в AlmaU",
+            sendap: "Отправить заявку",
+            name: "Имя",
+            gender2: "Пол",
+            birth_date: "Дата рождения",
+            email: "Электронная почта",
+            verified: "Проверено",
+            school: "Школа",
+            documents: "Документы",
+            spisok: "Список документов",
+            zayav: "Заявление",
+            udos: "Удостоверение личности",
+            attes: "Аттестат / диплом с приложением",
+            photo: "6 фото размером 3/4",
+            paspr: "паспорт здоровья",
+            cert: "Сертификат ЕНТ",
+            prip: "Приписное свидетельство(для юношей)",
+            docpod: "документ, подтверждающий преимущественное право на государственного оброзовательного гранта",
+            med: "Медицинская справка формы 075-у",
+            cop: "копия свидетельства о рождении",
+            dragdrop: "Перетащите файлы сюда",
+            uploaded: "Загруженные Документы",
+            subm: "Отправить",
+            male: "Мужчина",
+            female: "Женщина",
+            swal_title: "Проверьте свою почту!",
+            swal_text: "Код подтверждения успешно отправлен!",
+            swal_confirmButtonText: "OK",
+            full_name:"ФИО",
+        },
+        kz: {
+            welcome: "AlmaU қош келдіңіз",
+            sendap: "Өтініш жіберу",
+            name: "Аты",
+            gender2: "Жынысы",
+            birth_date: "Туған күні",
+            email: "Электрондық пошта",
+            verified: "Расталған",
+            school: "Мектеп",
+            documents: "Құжаттар",
+            spisok: "Құжаттар тізімі",
+            zayav: "Өтініш",
+            udos: "Жеке куәлік",
+            attes: "Диплом / Аттестат және қосымша",
+            photo: "6 фото 3/4 өлшемінде",
+            paspr: "Денсаулық паспорты",
+            cert: "ҰБТ Сертификаты",
+            prip: "Әскери куәлік(ер адамдар үшін)",
+            docpod: "Мемлекеттік білім беру грантына артықшылық құқығын растайтын құжат",
+            med: "075-у формасындағы медициналық анықтама",
+            cop: "Туу туралы куәліктің көшірмесі",
+            dragdrop: "Файлдарды мына жерге апарып тастаңыз",
+            uploaded: "Жүктелген Құжаттар",
+            subm: "Жіберу",
+            male: "Ер",
+            female: "Қыз",
+            swal_title: "Поштаңызды тексеріңіз!",
+            swal_text: "Растау коды сәтті жіберілді!",
+            swal_confirmButtonText: "Жарайды",
+            full_name:"Аты-жөні",
+        }
+    };
+    const element = document.getElementById('welcome');
+
+    element.style.fontFamily = 'Roboto, sans-serif';
+
+    function changeLanguage() {
+        const selectedLang = document.getElementById("languageSwitcher").value;
+        const langData = translations[selectedLang];
+
+        for (const key in langData) {
+            if (langData.hasOwnProperty(key)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = langData[key];
+                }
+            }
+        }
+    }
+
+    document.getElementById("languageSwitcher").addEventListener('change', changeLanguage);
+    changeLanguage();
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="regist page2">
+        <h1 class="title">UPLOAD YOUR STATE COPY OF BIRTH CERTIFICATE</h1>
+        <form method="post" enctype="multipart/form-data" id="registrationForm" onsubmit="return validateForm()">
+            {% csrf_token %}
+           
+            <div id="drop-area" class="drop-area">
+                
+                <div class="drop-text" id="dragdrop">Drag & Drop files here</div>
+                <input type="file" id="fileInput" name="file" multiple>
+            </div>
+            <button onclick="window.location.href = '{% url 'upload_certificate' %}';" type="submit" class="registerbtn" id="subm">Next</button>
+            <div id="file-list" class="file-list">
+                <h2>Uploaded Files</h2>
+                <ul id="files"></ul>
+            </div>
+            <style>
+               
+            
+            </style>
+
+            
+        </form>
+    </div>
+</main>
+
+<script>
+
+    
+    function validateForm() {
+        var files = document.getElementById("fileInput").files;
+        if (files.length === 0) {
+            alert("Please select at least one file.");
+            return false;
+        } else {
+            fireSweetAlert();
+            return false;
+        }
+    }
+
+    function fireSweetAlert() {
+        Swal.fire({
+            title: 'Успешно загружен',
+            text: 'Продолжайте',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonText: 'OK',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('registrationForm').submit();
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('files');
+        const feedback = document.createElement("div");
+        feedback.id = "feedback";
+        dropArea.appendChild(feedback);
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        dropArea.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', function () {
+            handleFiles(this.files);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        function highlight() {
+            dropArea.classList.add('highlight');
+        }
+
+        function unhighlight() {
+            dropArea.classList.remove('highlight');
+        }
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            files = [...files];
+            if (files.length > 2) {
+                displayFeedback('Please select up to 2 PDF files.', 'error');
+                fileInput.value = '';
+                return;
+            }
+
+            fileList.innerHTML = '';
+
+            files.forEach(handleFile);
+        }
+
+        function handleFile(file) {
+            if (file.type !== 'application/pdf') {
+                displayFeedback('Only PDF files are allowed.', 'error');
+                return;
+            }
+
+            const listItem = document.createElement('li');
+            const textNode = document.createTextNode(file.name + " (" + returnFileSize(file.size) + ")");
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.onclick = function () {
+                listItem.remove();
+                fileInput.value = '';
+            };
+            deleteBtn.style.marginLeft = '10px';
+
+            listItem.appendChild(textNode);
+            listItem.appendChild(deleteBtn);
+            fileList.appendChild(listItem);
+        }
+
+        function returnFileSize(number) {
+            if (number < 1024) {
+                return number + ' bytes';
+            } else if (number >= 1024 && number < 1048576) {
+                return (number / 1024).toFixed(1) + ' KB';
+            } else {
+                return (number / 1048576).toFixed(1) + ' MB';
+            }
+        }
+
+        function displayFeedback(message, type) {
+            feedback.innerText = message;
+            feedback.className = type;
+            setTimeout(() => {
+                feedback.innerText = '';
+                feedback.className = '';
+            }, 3000);
+        }
+    });
+
+</script>
+
+{% endblock %}

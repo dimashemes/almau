@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;1,200;1,300&family=Raleway:ital,wght@0,300;1,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+
+}
+@media (max-width: 480px) {
+    body{
+        width:100%;
+    }
+    .regist {
+        position: relative;
+        margin-left: 130px;
+        max-width: 100%;
+        bottom: 0px;
+    }
+    #gender,
+    #birth_date {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    #birth_date {
+        margin-top: 10px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 24px;
+        padding-bottom: 0;
+    }
+    .subtitle{
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    #subm {
+        margin-left: 0; /* Уменьшаем отступ у кнопки */
+        width: 100%; /* Занимаем всю ширину */
+    }
+    .title {
+        font-size: 24px; /* Уменьшение размера заголовка */
+    }
+
+    .drop-area {
+        margin-bottom: 10px; /* Уменьшение отступа между drop-area и кнопкой */
+    }
+
+    .registerbtn {
+        margin-left: 0; /* Установка отступа кнопки слева на 0 */
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .file-list {
+        margin-top: 10px; /* Увеличение отступа перед списком файлов */
+    }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .logo {
+        width: 100px; /* Размер логотипа для мобильных устройств */
+    }
+
+    #languageSwitcher {
+        width: 70px; /* Размер селектора языка для мобильных устройств */
+        display: flex;
+        position: absolute;
+        width: 80px;
+        /* margin-right: 5px; */
+        padding: 8px;
+        margin: 0;
+        left: 380px;
+    }
+
+    .back-g {
+        display: none; /* Скрытие фона на мобильных устройствах */
+    }
+}
+header {
+
+    width: 650px;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 60px;
+}
+
+.logo {
+    height: 50px;
+}
+
+
+#languageSwitcher {
+    display: flex;
+    position: relative;
+    width: 80px;
+    padding: 8px;
+    margin: 0;
+    left: 150px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('img/dropdown-arrow.png');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    font-family: Arial, sans-serif;
+}
+
+#languageSwitcher:hover,
+#languageSwitcher:focus {
+    border-color: #888;
+}
+
+
+.title {
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    font-size: 60px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    padding-bottom: 25px;
+}
+.subtitle{
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    font-size: 30px;
+    font-weight: 200;
+    font-style: normal;
+    padding-bottom: 25px;
+}
+
+.regist {
+    position: relative;
+    margin-left: 250px;
+    max-width: 600px;
+    bottom: 50px;
+}
+
+input[type=text],
+input[type=tel],
+input[type=email] {
+    width: 58%;
+    padding: 15px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+input[type=text]:focus,
+input[type=tel]:focus,
+input[type=email]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+.registerbtn {
+    background-color: #2a416d;
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    width: 63%;
+    opacity: 0.9;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+
+a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.icon-button-container {
+    position: relative;
+    display: inline-block;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.icon-button-container:hover .popup {
+    display: block;
+}
+
+
+.page2 {
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    color: #000000;
+    margin-left: 150px;
+}
+
+.drop-area {
+    width: 450px;
+    height: 250px;
+    border: 2px dashed #6990F2;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+#next {
+    margin-top: 20px;
+}
+
+#fileInput::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+#fileInput {
+    display: none;
+}
+
+.file-list {
+    width: 500px;
+    position: relative;
+    font-size: 10px;
+}
+
+.drop-area:hover, .drop-area.dragging {
+    border-color: #a366ff;
+    background-color: #fafafa;
+}
+
+.drop-text {
+    font-size: 18px;
+    color: #666;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.wrapper {
+    background: #fff;
+    border-radius: 5px;
+    padding: 30px;
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.wrapper:hover {
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+button, .file-input:hover, .uploadzone:hover {
+    background-color: #a366ff;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.wrapper, .drop-area, button, .file-input {
+    transition: all 0.3s ease-in-out;
+}
+
+button:focus, .file-input:focus, select:focus {
+    outline: 2px solid #a366ff;
+    outline-offset: 2px;
+}
+
+.drop-area.dragover {
+    background-color: #e1e7ff;
+    border-color: #a366ff;
+}

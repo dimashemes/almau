@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "almau"
+version = "0.1.0"
+description = ""
+authors = ["Dinmukhammed <arystambekdimash005@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10.12"
+tablib = "^3.6.0"
+django = "^5.0.4"
+openpyxl = "^3.1.2"
+gunicorn = "^22.0.0"
+django-cors-headers = "^4.3.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

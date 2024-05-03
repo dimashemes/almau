@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    #gender,
+    #birth_date {
+        width: 25%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+
+    }
+    @media (max-width: 480px) {
+        #gender,
+        #birth_date {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+    
+
+        #birth_date {
+            margin-top: 10px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .registerbtn {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+    }    
+</style>
+<section class="regist">
+    <h1 class="title" id="welcome">WELCOME TO ALMAU</h1>
+    <form action="{% url 'login' %}" method="post" id="registrationForm" onsubmit="return validateForm()">
+        <div class="container">
+            {% csrf_token %}
+            <input type="text" placeholder="Full name" name="full_name" id="full_name" required/>
+            <input type="email" placeholder="Email" name="email" id="email"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+            <div style="display: flex;">
+                <select id="gender" name="gender" required>
+                    <option value="male" id="male">Male</option>
+                    <option value="female" id="female">Female</option>
+                </select><br>
+                <input style="margin-left: 50px" type="date" placeholder="" id="birth_date" name="birth_date"
+                       required><br>
+            </div>
+            <input type="text" id="school" name="school" placeholder="Place of study" required><br>
+            <button type="submit" class="registerbtn" id="sendap">Send an application</button>
+        </div>
+    </form>
+</section>
+<script>
+    function validateForm() {
+        var fullName = document.getElementById("full_name").value;
+        var email = document.getElementById("email").value;
+        var gender = document.getElementById("gender").value;
+        var birthDate = document.getElementById("birth_date").value;
+        var school = document.getElementById("school").value;
+        if (fullName === "" || email === "" || gender === "" || birthDate === "" || school === "") {
+            alert("Please fill out all fields.");
+            return false;
+        } else {
+            fireSweetAlert();
+            return false;
+        }
+    }
+
+    function fireSweetAlert() {
+        Swal.fire({
+            title: 'Проверьте почту',
+            text: 'Верификационный код отправлен!',
+            icon: 'Успешно',
+            showCancelButton: false,
+            confirmButtonText: 'OK',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('registrationForm').submit();
+            }
+        });
+    }
+
+    
+</script>
+
+
+{% endblock %}

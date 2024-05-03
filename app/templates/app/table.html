@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Data</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 1500px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .alert {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .alert a {
+            color: #721c24;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .alert a:hover {
+            text-decoration: underline;
+        }
+
+        .export-button {
+            background-color: #39b92c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: block;
+            position: absolute;
+            top: 50px;
+        }
+
+        .export-button:hover {
+            background-color: #00b31e;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Applicants</h1>
+    <button class="export-button" id="exportBtn">Export Data</button>
+    <table>
+        <thead>
+        <tr>
+            <th id="name">Name</th>
+            <th id="gender2">Gender</th>
+            <th id="birth date">Birth Date</th>
+            <th id="email">Email</th>
+            <th id="verified">Verified</th>
+            <th id="school">School</th>
+            <th id="documenst">Documents</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for applicant_data in applicants %}
+        <tr>
+            <td>{{ applicant_data.applicant.full_name }}</td>
+            <td>{{ applicant_data.applicant.gender }}</td>
+            <td>{{ applicant_data.applicant.birth_date }}</td>
+            <td>{{ applicant_data.applicant.email }}</td>
+            <td>{{ applicant_data.applicant.verified }}</td>
+            <td>{{ applicant_data.applicant.school }}</td>
+            <td>
+                {% if applicant_data.documents %}
+                <div class="alert">
+                    <ul>
+                        {% for document in applicant_data.documents %}
+                        <ul>
+                            <li>{{document.type}}</li>
+                            <li><a href="{{ document.file.url }}">{{ document.file.name }}</a></li>
+                        </ul>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+
+    var value = prompt("Proof you are admin");
+    if (value !== "iadmin") {
+        window.location.href = "http://127.0.0.1:8000/";
+    }
+    document.getElementById("exportBtn").addEventListener("click", function () {
+        window.location.href = "export-excel/";
+    });
+</script>
+<script src="index.js"></script>
+
+</body>
+</html>

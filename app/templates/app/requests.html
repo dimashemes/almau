@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        td a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    <h2>Upload Ids</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Upload Id</th>
+            <th>Uploaded At</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for upload_id in upload_ids %}
+        <tr>
+            <td>{{ upload_id.user }}</td>
+            <td><a href="{{ upload_id.upload_id.url }}">{{ upload_id.upload_id.name }}</a></td>
+            <td>{{ upload_id.uploaded_at }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Upload Certificates</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Upload Certificate</th>
+            <th>Uploaded At</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for upload_certificate in upload_certificates %}
+        <tr>
+            <td>{{ upload_certificate.user }}</td>
+            <td><a href="{{ upload_certificate.upload_certificate.url }}">{{ upload_certificate.upload_certificate.name
+                }}</a></td>
+            <td>{{ upload_certificate.uploaded_at }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

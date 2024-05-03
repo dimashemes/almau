@@ -134,7 +134,9 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://*",
     "https://*",
-    "https://almau.up.railway.app",
+    "http://almau.up.railway.app/",
+    "http://almau.up.railway.app/*",
+    "https://almau.up.railway.app/",
     "https://almau.up.railway.app/*"
 ]
 CORS_ALLOW_METHODS = [

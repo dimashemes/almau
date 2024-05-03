@@ -2,6 +2,7 @@
 
 export DJANGO_SETTINGS_MODULE=core.settings
 
+python manage.py collectstatic --noinput
 
 echo 'Applying migrations...'
 python manage.py migrate
